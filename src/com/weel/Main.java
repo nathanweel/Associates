@@ -23,7 +23,7 @@ public class Main {
         PokedexWorker worker = new PokedexWorker();
         Pokedex pokedex = worker.convertInput(name, hp, type, moves);
 
-        System.out.println("This is our first test with git enabled");
+        System.out.println("This is our first test with git enabled!!");
 
     }
 }
