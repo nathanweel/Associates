@@ -1,3 +1,3 @@
-# pokedex
+# Pokedex
 
-This is a test
+A database for entering Pokemon names, their typing, and their moveset!
