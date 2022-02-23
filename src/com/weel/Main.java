@@ -14,9 +14,16 @@ public class Main {
         String moves;
 
         //TODO: 6. Ask user for all inputs here **DONE**
+        System.out.println("What is the name of the Pokemon?");
         name = System.console().readLine();
+
+        System.out.println("How much health does this Pokemon have?");
         hp = Integer.parseInt(System.console().readLine());
+
+        System.out.println("What type(s) is your Pokemon?");
         type = System.console().readLine();
+
+        System.out.println("What move(s) can this Pokemon use?\nSeparate by coma");
         moves = System.console().readLine();
 
 
