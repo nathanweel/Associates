@@ -44,6 +44,6 @@ public class Pokedex {
 
     //TODO: 3. Add functionality to write object to a string **DONE**
     public String toString() {
-        return getName() + "," + getHp() + "," + getMoves() + "," + getType();
+        return getName() + "," + getHp() + "," + getType() + "," + getMoves();
     }
 }
