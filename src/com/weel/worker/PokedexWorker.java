@@ -31,7 +31,6 @@ public class PokedexWorker implements IPokedex {
 
     @Override
     public Pokedex findByName(String name) {
-        int hi = 30;
         return null;
     }
 }
