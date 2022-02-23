@@ -9,6 +9,9 @@ public class Main {
 
     public static void main(String[] args) throws IOException {
 
+        System.out.println("                                                \n" + " \\    / _  |  _  _  ._ _   _                     \n" + "  \\/\\/ (/_ | (_ (_) | | | (/_                    \n" + " |_)      ._   _. _|_ |_   _. ._        _   _  | \n" + " |_) \\/   | | (_|  |_ | | (_| | | \\/\\/ (/_ (/_ | \n" + "     /                                           ");
+
+
         //TODO: 5. All values coming from user **DONE**
         String name;
         int hp;
