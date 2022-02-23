@@ -2,6 +2,10 @@ package com.weel.worker;
 
 import com.weel.pokedex.domain.Pokedex;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class PokedexWorker implements IPokedex {
     @Override
     public Pokedex convertInput(String name, int hp, String type, String moves) {
@@ -14,9 +18,15 @@ public class PokedexWorker implements IPokedex {
         return pokemon;
     }
 
+    //TODO 7 : Implement the write function to file **DONE**
     @Override
-    public boolean write(Pokedex pokedex) {
-        return false;
+    public boolean write(Pokedex pokedex) throws IOException {
+        String filename = "C:\\temp\\pokedex.txt";
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
+        writer.write(pokedex.toString());
+
+        return true;
     }
 
     @Override
