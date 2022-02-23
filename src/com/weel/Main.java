@@ -3,9 +3,11 @@ package com.weel;
 import com.weel.pokedex.domain.Pokedex;
 import com.weel.worker.PokedexWorker;
 
+import java.io.IOException;
+
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
         //TODO: 5. All values coming from user **DONE**
         String name;
@@ -26,9 +28,10 @@ public class Main {
         System.out.println("What move(s) can this Pokemon use?\nSeparate by coma");
         moves = System.console().readLine();
 
-
         PokedexWorker worker = new PokedexWorker();
         Pokedex pokedex = worker.convertInput(name, hp, type, moves);
+
+        worker.write(pokedex);
 
     }
 }

@@ -21,11 +21,12 @@ public class PokedexWorker implements IPokedex {
     //TODO 7 : Implement the write function to file **DONE**
     @Override
     public boolean write(Pokedex pokedex) throws IOException {
-        String filename = "C:\\temp\\pokedex.txt";
+        String filename = "C:\\Temp\\pokedex.txt";
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
-        writer.write(pokedex.toString());
+        BufferedWriter writer = new BufferedWriter(new FileWriter(filename, true));
+        writer.append(pokedex.toString() + "\n");
 
+        writer.close();
         return true;
     }
 
