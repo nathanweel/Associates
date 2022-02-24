@@ -7,7 +7,7 @@ import java.io.IOException;
 
 public class Main {
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) throws IOException, InterruptedException {
 
         //TODO: 5. All values coming from user **DONE**
         String name;
@@ -38,12 +38,22 @@ public class Main {
             PokedexWorker worker = new PokedexWorker();
             Pokedex pokedex = worker.convertInput(name, hp, type, moves);
 
-            System.out.println("Writing credentials to a file...\n...\n...\n...DONE");
+            System.out.println("Writing credentials to a file...");
+            Thread.sleep(2000);
+            System.out.println("...");
+            Thread.sleep(2000);
+            System.out.println("...");
+            Thread.sleep(2000);
+            System.out.println("...");
+            Thread.sleep(1000);
+
             worker.write(pokedex);
+            System.out.println("\nDONE");
 
         } else if (reply.equalsIgnoreCase("search")) {
             System.out.println("Functionality not yet added");
-        }else{
+
+        } else {
             System.out.println("Unidentified entry");
         }
     }
