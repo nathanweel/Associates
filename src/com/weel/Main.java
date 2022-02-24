@@ -39,13 +39,13 @@ public class Main {
             Pokedex pokedex = worker.convertInput(name, hp, type, moves);
 
             System.out.println("Writing credentials to a file...");
-            Thread.sleep(2000);
-            System.out.println("...");
-            Thread.sleep(2000);
-            System.out.println("...");
-            Thread.sleep(2000);
+            Thread.sleep(1000);
             System.out.println("...");
             Thread.sleep(1000);
+            System.out.println("...");
+            Thread.sleep(1000);
+            System.out.println("...");
+            Thread.sleep(500);
 
             worker.write(pokedex);
             System.out.println("\nDONE");
