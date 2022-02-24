@@ -54,7 +54,7 @@ public class Main {
             System.out.println("Functionality not yet added");
 
         } else {
-            System.out.println("Unidentified entry");
+            System.out.println("Unknown entry");
         }
     }
 }
