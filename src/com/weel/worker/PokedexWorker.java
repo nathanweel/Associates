@@ -5,6 +5,12 @@ import com.weel.pokedex.domain.Pokedex;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.List;
 
 public class PokedexWorker implements IPokedex {
     @Override
@@ -32,6 +38,26 @@ public class PokedexWorker implements IPokedex {
 
     @Override
     public Pokedex findByName(String name) {
+        return null;
+    }
+
+    @Override
+    public List read(String filename) {
+
+        List lines = Collections.emptyList();
+
+        try {
+            lines = Files.readAllLines(Paths.get(filename), StandardCharsets.UTF_8);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Caught error");
+        }
+
+        Iterator<String> itr = lines.iterator();
+        while (itr.hasNext()){
+            System.out.println(itr.next());
+    }
         return null;
     }
 }
