@@ -38,12 +38,32 @@ public class PokedexWorker implements IPokedex {
 
     @Override
     public Pokedex findByName(String name) {
+        List list = readFileContents("C:\\Temp\\pokedex.txt");
+
+        for (int i = 0; i < list.size(); i++) {
+            String line = (String) list.get(i);
+
+            if (line.contains(name)) {
+                System.out.println("\n" + line);
+            }
+        }
+
         return null;
     }
 
     @Override
-    public List read(String filename) {
+    public List readAndWrite(String filename) {
+         List lines = readFileContents("C:\\Temp\\pokedex.txt");
 
+        Iterator itr = lines.iterator();
+        while (itr.hasNext()) {
+            System.out.println(itr.next());
+        }
+        return null;
+    }
+
+    @Override
+    public List readFileContents(String filename) {
         List lines = Collections.emptyList();
 
         try {
@@ -54,10 +74,6 @@ public class PokedexWorker implements IPokedex {
             System.out.println("Caught error");
         }
 
-        Iterator<String> itr = lines.iterator();
-        while (itr.hasNext()) {
-            System.out.println(itr.next());
-        }
-        return null;
+        return lines;
     }
 }

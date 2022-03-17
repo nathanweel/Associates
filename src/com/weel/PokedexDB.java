@@ -20,6 +20,8 @@ public class PokedexDB {
         //Welcome Signature
         System.out.println("                                                \n" + " \\    / _  |  _  _  ._ _   _                     \n" + "  \\/\\/ (/_ | (_ (_) | | | (/_                    \n" + " |_)      ._   _. _|_ |_   _. ._        _   _  | \n" + " |_) \\/   | | (_|  |_ | | (_| | | \\/\\/ (/_ (/_ | \n" + "     /                                           ");
 
+        PokedexWorker worker = new PokedexWorker();
+
         System.out.println("Would you like to add a new Pokemon, search for a Pokemon or read the file\nType add, search or read");
         String reply = System.console().readLine();
 
@@ -37,7 +39,6 @@ public class PokedexDB {
             System.out.println("\nWhat move(s) can this Pokemon use?\nSeparate by coma");
             moves = System.console().readLine();
 
-            PokedexWorker worker = new PokedexWorker();
             Pokedex pokedex = worker.convertInput(name, hp, type, moves);
 
             System.out.println("\nWriting credentials to a file...");
@@ -53,13 +54,14 @@ public class PokedexDB {
             System.out.println("\nDONE");
 
         } else if (reply.equalsIgnoreCase("search")) {
-            System.out.println("\nFunctionality not yet added");
+            System.out.println("\nWhat Pokemon would you like to search for?");
+            name = System.console().readLine();
+
+            worker.findByName(name);
 
         } else if (reply.equalsIgnoreCase("read")) {
-            PokedexWorker worker = new PokedexWorker();
-
             System.out.println("\nHere is the file:-\n");
-            worker.read("C:\\Temp\\pokedex.txt");
+            worker.readAndWrite("C:\\Temp\\pokedex.txt");
 
         } else {
             System.out.println("Unknown function");
