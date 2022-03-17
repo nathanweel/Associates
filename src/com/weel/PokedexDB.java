@@ -25,16 +25,16 @@ public class PokedexDB {
 
         if (reply.equalsIgnoreCase("add")) {
             //TODO: 6. Ask user for all inputs here **DONE**
-            System.out.println("What is the name of the Pokemon?");
+            System.out.println("\nWhat is the name of the Pokemon?");
             name = System.console().readLine();
 
-            System.out.println("How much health does this Pokemon have?");
+            System.out.println("\nHow much health does this Pokemon have?");
             hp = Integer.parseInt(System.console().readLine());
 
-            System.out.println("What type(s) is your Pokemon?");
+            System.out.println("\nWhat type(s) is your Pokemon?");
             type = System.console().readLine();
 
-            System.out.println("What move(s) can this Pokemon use?\nSeparate by coma");
+            System.out.println("\nWhat move(s) can this Pokemon use?\nSeparate by coma");
             moves = System.console().readLine();
 
             PokedexWorker worker = new PokedexWorker();
@@ -53,12 +53,12 @@ public class PokedexDB {
             System.out.println("\nDONE");
 
         } else if (reply.equalsIgnoreCase("search")) {
-            System.out.println("Functionality not yet added");
+            System.out.println("\nFunctionality not yet added");
 
-        } else if (reply.equalsIgnoreCase("read")){
+        } else if (reply.equalsIgnoreCase("read")) {
             PokedexWorker worker = new PokedexWorker();
 
-            System.out.println("Here is the file:-\n");
+            System.out.println("\nHere is the file:-\n");
             worker.read("C:\\Temp\\pokedex.txt");
 
         } else {

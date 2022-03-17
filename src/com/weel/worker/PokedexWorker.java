@@ -55,9 +55,9 @@ public class PokedexWorker implements IPokedex {
         }
 
         Iterator<String> itr = lines.iterator();
-        while (itr.hasNext()){
+        while (itr.hasNext()) {
             System.out.println(itr.next());
-    }
+        }
         return null;
     }
 }
