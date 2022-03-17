@@ -51,7 +51,6 @@ public class PokedexDB {
             worker.write(pokedex);
             System.out.println("\nDONE");
 
-
         } else if (reply.equalsIgnoreCase("search")) {
             System.out.println("Functionality not yet added");
 
@@ -60,7 +59,7 @@ public class PokedexDB {
             worker.read("C:\\Temp\\pokedex.txt");
 
         } else {
-            System.out.println("Unknown entry");
+            System.out.println("Unknown function");
         }
     }
 }
