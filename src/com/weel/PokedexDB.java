@@ -54,7 +54,7 @@ public class PokedexDB {
             System.out.println("Functionality not yet added");
 
         } else {
-            System.out.println("Unknown entry");
+            System.out.println("Unknown function");
         }
     }
 }
