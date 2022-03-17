@@ -5,6 +5,8 @@ import com.weel.worker.PokedexWorker;
 
 import java.io.IOException;
 
+//Run this class!
+
 public class PokedexDB {
 
     public static void main(String[] args) throws IOException, InterruptedException {
