@@ -15,12 +15,10 @@ public class PokedexDB {
         String type;
         String moves;
 
-        PokedexWorker worker = new PokedexWorker();
-
         //Welcome Signature
         System.out.println("                                                \n" + " \\    / _  |  _  _  ._ _   _                     \n" + "  \\/\\/ (/_ | (_ (_) | | | (/_                    \n" + " |_)      ._   _. _|_ |_   _. ._        _   _  | \n" + " |_) \\/   | | (_|  |_ | | (_| | | \\/\\/ (/_ (/_ | \n" + "     /                                           ");
 
-        System.out.println("Would you like to add a new Pokemon, search for a Pokemon or read the full database?\nType add, search, or read");
+        System.out.println("Would you like to add a new Pokemon or search for a Pokemon?\nType add or search");
         String reply = System.console().readLine();
 
         if (reply.equalsIgnoreCase("add")) {
@@ -37,9 +35,10 @@ public class PokedexDB {
             System.out.println("What move(s) can this Pokemon use?\nSeparate by coma");
             moves = System.console().readLine();
 
+            PokedexWorker worker = new PokedexWorker();
             Pokedex pokedex = worker.convertInput(name, hp, type, moves);
 
-            System.out.println("Writing credentials to the database...");
+            System.out.println("Writing credentials to a file...");
             Thread.sleep(1000);
             System.out.println("...");
             Thread.sleep(1000);
@@ -54,12 +53,8 @@ public class PokedexDB {
         } else if (reply.equalsIgnoreCase("search")) {
             System.out.println("Functionality not yet added");
 
-        } else if (reply.equalsIgnoreCase("read")) {
-            System.out.println("Here is the full database:");
-            worker.read("C:\\Temp\\pokedex.txt");
-
         } else {
-            System.out.println("Unknown function");
+            System.out.println("Unknown entry");
         }
     }
 }
