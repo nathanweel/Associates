@@ -1,6 +1,7 @@
 # Pokedex
 
 A database for entering Pokemon names, their typing, and their moveset!
+(Works best on Windows 10 or later)
 
 # Functionality
 
