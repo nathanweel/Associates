@@ -27,6 +27,7 @@ public class PokedexWorker implements IPokedex {
     //TODO 7 : Implement the write function to file **DONE**
     @Override
     public boolean write(Pokedex pokedex) throws IOException {
+        //Change filename to the file's location
         String filename = "C:\\Temp\\pokedex.txt";
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(filename, true));
@@ -38,6 +39,7 @@ public class PokedexWorker implements IPokedex {
 
     @Override
     public Pokedex findByName(String name) {
+        //Change filename to the file's location
         List list = readFileContents("C:\\Temp\\pokedex.txt");
 
         for (int i = 0; i < list.size(); i++) {
@@ -47,13 +49,13 @@ public class PokedexWorker implements IPokedex {
                 System.out.println("\n" + line);
             }
         }
-
         return null;
     }
 
     @Override
-    public List readAndWrite(String filename) {
-         List lines = readFileContents("C:\\Temp\\pokedex.txt");
+    public List showFile(String filename) {
+        //Change filename to the file's location
+        List lines = readFileContents("C:\\Temp\\pokedex.txt");
 
         Iterator itr = lines.iterator();
         while (itr.hasNext()) {
@@ -73,7 +75,6 @@ public class PokedexWorker implements IPokedex {
             e.printStackTrace();
             System.out.println("Caught error");
         }
-
         return lines;
     }
 }

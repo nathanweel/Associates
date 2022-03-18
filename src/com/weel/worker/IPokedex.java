@@ -14,7 +14,7 @@ public interface IPokedex {
 
     Pokedex findByName(String name);
 
-    List readAndWrite(String filename);
+    List showFile(String filename);
 
     List readFileContents(String filename);
 }

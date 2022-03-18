@@ -3,6 +3,7 @@ package com.weel;
 import com.weel.pokedex.domain.Pokedex;
 import com.weel.worker.PokedexWorker;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 
 //Run this class!
@@ -50,8 +51,16 @@ public class PokedexDB {
             System.out.println("...");
             Thread.sleep(500);
 
-            worker.write(pokedex);
-            System.out.println("\nDONE");
+            try {
+                worker.write(pokedex);
+                System.out.println("\nDONE");
+
+            } catch (FileNotFoundException e) {
+                System.out.println("File not found");
+                System.out.println("\nMake sure the file is labeled 'pokedex.txt' and that it is inside of a folder called 'Temp'.\nAlso make sure the folder is on the local disk.");
+            }
+
+
 
         } else if (reply.equalsIgnoreCase("search")) {
             System.out.println("\nWhat Pokemon would you like to search for?");
@@ -61,7 +70,8 @@ public class PokedexDB {
 
         } else if (reply.equalsIgnoreCase("read")) {
             System.out.println("\nHere is the file:-\n");
-            worker.readAndWrite("C:\\Temp\\pokedex.txt");
+            //Change filename to the file's location
+            worker.showFile("C:\\Temp\\pokedex.txt");
 
         } else {
             System.out.println("Unknown function");
