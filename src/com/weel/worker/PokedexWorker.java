@@ -38,6 +38,20 @@ public class PokedexWorker implements IPokedex {
     }
 
     @Override
+    public List readFileContents(String filename) {
+        List lines = Collections.emptyList();
+
+        try {
+            lines = Files.readAllLines(Paths.get(filename), StandardCharsets.UTF_8);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Caught error");
+        }
+        return lines;
+    }
+
+    @Override
     public Pokedex findByName(String name) {
         //Change filename to the file's location
         List list = readFileContents("C:\\Temp\\pokedex.txt");
@@ -45,7 +59,26 @@ public class PokedexWorker implements IPokedex {
         for (int i = 0; i < list.size(); i++) {
             String line = (String) list.get(i);
 
-            if (line.contains(name)) {
+            Pokedex pokedex = lineToObj(line);
+
+            if (pokedex.getName().contains(name)) {
+                System.out.println("\n" + line);
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Pokedex findByType(String type) {
+        //Change filename to the file's location
+        List list = readFileContents("C:\\Temp\\pokedex.txt");
+
+        for (int i = 0; i < list.size(); i++) {
+            String line = (String) list.get(i);
+
+            Pokedex pokedex = lineToObj(line);
+
+            if (pokedex.getType().contains(type)) {
                 System.out.println("\n" + line);
             }
         }
@@ -65,16 +98,16 @@ public class PokedexWorker implements IPokedex {
     }
 
     @Override
-    public List readFileContents(String filename) {
-        List lines = Collections.emptyList();
+    public Pokedex lineToObj(String line) {
+        String[] splitLine = line.split(",");
 
-        try {
-            lines = Files.readAllLines(Paths.get(filename), StandardCharsets.UTF_8);
+        Pokedex pokedex = new Pokedex();
 
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("Caught error");
-        }
-        return lines;
+        pokedex.setName(splitLine[0]);
+        pokedex.setHp(Integer.parseInt(splitLine[1]));
+        pokedex.setType(splitLine[2]);
+        pokedex.setMoves(splitLine[3]);
+
+        return pokedex;
     }
 }

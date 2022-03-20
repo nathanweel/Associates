@@ -1,5 +1,6 @@
 package com.weel.worker;
 
+import com.weel.PokedexDB;
 import com.weel.pokedex.domain.Pokedex;
 
 import java.io.IOException;
@@ -12,9 +13,13 @@ public interface IPokedex {
 
     boolean write(Pokedex pokedex) throws IOException;
 
+    List readFileContents(String filename);
+
     Pokedex findByName(String name);
+
+    Pokedex findByType(String type);
 
     List showFile(String filename);
 
-    List readFileContents(String filename);
+    Pokedex lineToObj(String line);
 }
