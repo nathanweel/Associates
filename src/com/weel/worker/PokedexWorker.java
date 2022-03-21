@@ -86,6 +86,23 @@ public class PokedexWorker implements IPokedex {
     }
 
     @Override
+    public Pokedex findByMoves(String moves) {
+        //Change filename to the file's location
+        List list = readFileContents("C:\\Temp\\pokedex.txt");
+
+        for (int i = 0; i < list.size(); i++) {
+            String line = (String) list.get(i);
+
+            Pokedex pokedex = lineToObj(line);
+
+            if (pokedex.getMoves().contains(moves)) {
+                System.out.println("\n" + line);
+            }
+        }
+        return null;
+    }
+
+    @Override
     public List showFile(String filename) {
         //Change filename to the file's location
         List lines = readFileContents("C:\\Temp\\pokedex.txt");

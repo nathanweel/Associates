@@ -19,6 +19,8 @@ public interface IPokedex {
 
     Pokedex findByType(String type);
 
+    Pokedex findByMoves(String moves);
+
     List showFile(String filename);
 
     Pokedex lineToObj(String line);
