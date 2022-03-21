@@ -86,7 +86,7 @@ public class PokedexDB {
                 worker.findByMoves(moves);
 
             } else {
-                //System.out.println("Unknown search request");
+                System.out.println("Unknown search request");
             }
 
         } else if (reply.equalsIgnoreCase("read")) {
