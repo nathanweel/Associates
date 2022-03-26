@@ -15,6 +15,8 @@ public interface IPokedex {
 
     List readFileContents(String filename);
 
+    Pokedex lineToObj(String line);
+
     Pokedex findByName(String name);
 
     Pokedex findByType(String type);
@@ -23,5 +25,6 @@ public interface IPokedex {
 
     List showFile(String filename);
 
-    Pokedex lineToObj(String line);
+    boolean delete(String name) throws IOException;
+
 }

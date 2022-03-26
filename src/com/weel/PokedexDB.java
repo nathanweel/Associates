@@ -23,7 +23,7 @@ public class PokedexDB {
 
         PokedexWorker worker = new PokedexWorker();
 
-        System.out.println("Would you like to add a new Pokemon, search for a Pokemon or read the file\nType add, search or read");
+        System.out.println("Would you like to add a new Pokemon, search for a Pokemon, read the file or delete and entry?\nType add, search, read, or delete");
         String reply = System.console().readLine();
 
         if (reply.equalsIgnoreCase("add")) {
@@ -61,7 +61,7 @@ public class PokedexDB {
             }
 
         } else if (reply.equalsIgnoreCase("search")) {
-            System.out.println("\nWould you like to search by name, type, or by moves?\nType name, type or moves");
+            System.out.println("\nWould you like to search by name, type, or moves?\nType name, type or moves");
             reply = System.console().readLine();
 
             if (reply.equalsIgnoreCase("name")) {
@@ -93,6 +93,21 @@ public class PokedexDB {
             System.out.println("Here is the file:-\n");
             //Change filename to the file's location
             worker.showFile("C:\\Temp\\pokedex.txt");
+
+        } else if (reply.equalsIgnoreCase("delete")) {
+            System.out.println("\nWhat entry would you like to delete?\nType the name of the Pokemon");
+            name = System.console().readLine();
+
+            System.out.println("\nDeleting entry...");
+            Thread.sleep(1000);
+            System.out.println("...");
+            Thread.sleep(1000);
+            System.out.println("...");
+            Thread.sleep(1000);
+            System.out.println("...");
+            Thread.sleep(500);
+
+            worker.delete(name);
 
         } else {
             System.out.println("Unknown function");

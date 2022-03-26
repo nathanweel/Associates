@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
@@ -49,6 +50,20 @@ public class PokedexWorker implements IPokedex {
             System.out.println("Caught error");
         }
         return lines;
+    }
+
+    @Override
+    public Pokedex lineToObj(String line) {
+        String[] splitLine = line.split(",");
+
+        Pokedex pokedex = new Pokedex();
+
+        pokedex.setName(splitLine[0]);
+        pokedex.setHp(Integer.parseInt(splitLine[1]));
+        pokedex.setType(splitLine[2]);
+        pokedex.setMoves(splitLine[3]);
+
+        return pokedex;
     }
 
     @Override
@@ -115,16 +130,31 @@ public class PokedexWorker implements IPokedex {
     }
 
     @Override
-    public Pokedex lineToObj(String line) {
-        String[] splitLine = line.split(",");
+    public boolean delete(String name) throws IOException {
+        String filename = "C:\\Temp\\pokedex.txt";
 
-        Pokedex pokedex = new Pokedex();
+        List list = readFileContents(filename);
+        List copyList = new ArrayList();
+        copyList.addAll(list);
 
-        pokedex.setName(splitLine[0]);
-        pokedex.setHp(Integer.parseInt(splitLine[1]));
-        pokedex.setType(splitLine[2]);
-        pokedex.setMoves(splitLine[3]);
+        for (int i = 0; i < list.size(); i++) {
+            String line = (String) list.get(i);
 
-        return pokedex;
+            Pokedex pokedex = lineToObj(line);
+
+            if (pokedex.getName().contains(name)) {
+                System.out.println("\nDeleted\n" + line);
+                copyList.remove(i);
+            }
+        }
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(filename, false));
+        for(Object str : copyList) {
+            writer.write(str + System.lineSeparator());
+        }
+
+        writer.close();
+
+        return false;
     }
 }
