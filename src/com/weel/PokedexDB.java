@@ -23,7 +23,7 @@ public class PokedexDB {
 
         PokedexWorker worker = new PokedexWorker();
 
-        System.out.println("Would you like to add a new Pokemon, search for a Pokemon, read the file or delete and entry?\nType add, search, read, or delete");
+        System.out.println("Would you like to add a new Pokemon, search for a Pokemon, read the file, wipe the file, or delete an entry\nType add, search, read, wipe, or delete");
         String reply = System.console().readLine();
 
         if (reply.equalsIgnoreCase("add")) {
@@ -108,6 +108,27 @@ public class PokedexDB {
             Thread.sleep(500);
 
             worker.delete(name);
+
+        } else if (reply.equalsIgnoreCase("wipe")) {
+            System.out.println("\nAre you sure you want to wipe the file of all contents?\nType yes or no");
+            reply = System.console().readLine();
+
+            if (reply.equalsIgnoreCase("yes")) {
+                System.out.println("\nWiping file...");
+                Thread.sleep(1000);
+                System.out.println("...");
+                Thread.sleep(1000);
+                System.out.println("...");
+                Thread.sleep(1000);
+                System.out.println("...");
+                Thread.sleep(500);
+
+                worker.fileWipe();
+                System.out.println("File contents deleted");
+
+            } else {
+                System.out.println("\nCrisis averted");
+            }
 
         } else {
             System.out.println("Unknown function");

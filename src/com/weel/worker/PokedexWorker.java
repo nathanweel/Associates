@@ -167,4 +167,13 @@ public class PokedexWorker implements IPokedex {
 
         return false;
     }
+
+    @Override
+    public boolean fileWipe() throws IOException {
+        List copyList = new ArrayList();
+
+        overWrite(copyList);
+
+        return false;
+    }
 }

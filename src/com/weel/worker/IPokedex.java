@@ -29,4 +29,6 @@ public interface IPokedex {
 
     boolean delete(String name) throws IOException;
 
+    boolean fileWipe() throws IOException;
+
 }
