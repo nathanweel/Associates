@@ -13,6 +13,8 @@ public interface IPokedex {
 
     boolean write(Pokedex pokedex) throws IOException;
 
+    boolean overWrite(List copyList) throws IOException;
+
     List readFileContents(String filename);
 
     Pokedex lineToObj(String line);

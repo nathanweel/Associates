@@ -14,6 +14,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class PokedexWorker implements IPokedex {
+
     @Override
     public Pokedex convertInput(String name, int hp, String type, String moves) {
         //TODO 4. Implement this method **DONE**
@@ -33,6 +34,20 @@ public class PokedexWorker implements IPokedex {
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(filename, true));
         writer.append(pokedex.toString() + "\n");
+
+        writer.close();
+        return true;
+    }
+
+    @Override
+    public boolean overWrite(List copyList) throws IOException {
+        String filename = "C:\\Temp\\pokedex.txt";
+
+        BufferedWriter writer = new BufferedWriter(new FileWriter(filename, false));
+
+        for (Object str : copyList) {
+            writer.write(str + System.lineSeparator());
+        }
 
         writer.close();
         return true;
@@ -148,12 +163,7 @@ public class PokedexWorker implements IPokedex {
             }
         }
 
-        BufferedWriter writer = new BufferedWriter(new FileWriter(filename, false));
-        for(Object str : copyList) {
-            writer.write(str + System.lineSeparator());
-        }
-
-        writer.close();
+        overWrite(copyList);
 
         return false;
     }

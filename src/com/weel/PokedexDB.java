@@ -68,21 +68,21 @@ public class PokedexDB {
                 System.out.println("\nWhat is the name of the Pokemon?");
                 name = System.console().readLine();
 
-                System.out.println("\nHere are your results:-");
+                System.out.println("\nHere are your results:-\nKey: name, hp, type, moves");
                 worker.findByName(name);
 
             } else if (reply.equalsIgnoreCase("type")) {
                 System.out.println("\nWhat is/are the Pokemon's type(s)");
                 type = System.console().readLine();
 
-                System.out.println("\nHere are your results:-");
+                System.out.println("\nHere are your results:-\nKey: name, hp, type, moves");
                 worker.findByType(type);
 
             } else if (reply.equalsIgnoreCase("moves")) {
                 System.out.println("What move(s) can this Pokemon use?");
                 moves = System.console().readLine();
 
-                System.out.println("\nHere are your results:-");
+                System.out.println("\nHere are your results:-\nKey: name, hp, type, moves");
                 worker.findByMoves(moves);
 
             } else {
@@ -90,7 +90,7 @@ public class PokedexDB {
             }
 
         } else if (reply.equalsIgnoreCase("read")) {
-            System.out.println("Here is the file:-\n");
+            System.out.println("Here is the file:-\nKey: name, hp, type, moves\n");
             //Change filename to the file's location
             worker.showFile("C:\\Temp\\pokedex.txt");
 
