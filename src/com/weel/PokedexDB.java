@@ -12,7 +12,6 @@ public class PokedexDB {
 
     public static void main(String[] args) throws IOException, InterruptedException {
 
-        //TODO: 5. All values coming from user **DONE**
         String name;
         int hp;
         String type;
@@ -27,7 +26,6 @@ public class PokedexDB {
         String reply = System.console().readLine();
 
         if (reply.equalsIgnoreCase("add")) {
-            //TODO: 6. Ask user for all inputs here **DONE**
             System.out.println("\nWhat is the name of the Pokemon?");
             name = System.console().readLine();
 

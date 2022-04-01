@@ -17,7 +17,6 @@ public class PokedexWorker implements IPokedex {
 
     @Override
     public Pokedex convertInput(String name, int hp, String type, String moves) {
-        //TODO 4. Implement this method **DONE**
         Pokedex pokemon = new Pokedex();
         pokemon.setName(name);
         pokemon.setHp(hp);
@@ -26,7 +25,6 @@ public class PokedexWorker implements IPokedex {
         return pokemon;
     }
 
-    //TODO 7 : Implement the write function to file **DONE**
     @Override
     public boolean write(Pokedex pokedex) throws IOException {
         //Change filename to the file's location
