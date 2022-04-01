@@ -1,6 +1,5 @@
 package com.weel.worker;
 
-import com.weel.PokedexDB;
 import com.weel.pokedex.domain.Pokedex;
 
 import java.io.IOException;
@@ -27,6 +26,8 @@ public interface IPokedex {
     List showFile(String filename);
 
     boolean delete(String name) throws IOException;
+
+    boolean update(String name, int hp, String type, String moves) throws IOException;
 
     boolean fileWipe() throws IOException;
 

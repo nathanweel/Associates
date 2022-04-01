@@ -167,6 +167,32 @@ public class PokedexWorker implements IPokedex {
     }
 
     @Override
+    public boolean update(String name, int hp, String type, String moves) throws IOException {
+        String filename = "C:\\Temp\\pokedex.txt";
+
+        List list = readFileContents(filename);
+        List copyList = new ArrayList();
+        copyList.addAll(list);
+
+        for (int i = 0; i < list.size(); i++) {
+            String line = (String) list.get(i);
+
+            Pokedex pokedex = lineToObj(line);
+
+            if (pokedex.getName().contains(name)) {
+                Pokedex pokemon = convertInput(name, hp, type, moves);
+
+                copyList.remove(i);
+                copyList.add(pokemon);
+            }
+        }
+
+        overWrite(copyList);
+
+        return true;
+    }
+
+    @Override
     public boolean fileWipe() throws IOException {
         List copyList = new ArrayList();
 
