@@ -111,35 +111,29 @@ public class PokedexDB {
             System.out.println("\nWhich Pokemon's data would you like to alter?\nType the name of the Pokemon");
             name = System.console().readLine();
 
-            System.out.println("\nWould you like to alter this entry?\nType yes or no");
+            System.out.println("You are updating the entry below");
             worker.findByName(name);
-            reply = System.console().readLine();
 
-            if (reply.equalsIgnoreCase("yes")) {
-                System.out.println("\nWhat would you like to change the name to?");
-                name = System.console().readLine();
+            System.out.println("\nWhat would you like to change the hp to?");
+            hp = Integer.parseInt(System.console().readLine());
 
-                System.out.println("\nWhat would you like to change the hp to?");
-                hp = Integer.parseInt(System.console().readLine());
+            System.out.println("\nWhat would you like to change the type to?");
+            type = System.console().readLine();
 
-                System.out.println("\nWhat would you like to change the type to?");
-                type = System.console().readLine();
+            System.out.println("\nWhat would you like to change the moves to?");
+            moves = System.console().readLine();
 
-                System.out.println("\nWhat would you like to change the moves to?");
-                moves = System.console().readLine();
+            System.out.println("\nUpdating entry...");
+            Thread.sleep(1000);
+            System.out.println("...");
+            Thread.sleep(1000);
+            System.out.println("...");
+            Thread.sleep(1000);
+            System.out.println("...");
+            Thread.sleep(500);
 
-                System.out.println("\nUpdating entry...");
-                Thread.sleep(1000);
-                System.out.println("...");
-                Thread.sleep(1000);
-                System.out.println("...");
-                Thread.sleep(1000);
-                System.out.println("...");
-                Thread.sleep(500);
-
-                worker.update(name, hp, type, moves);
-                System.out.println("Entry updated");
-            }
+            worker.update(name, hp, type, moves);
+            System.out.println("Entry updated");
 
         } else if (reply.equalsIgnoreCase("wipe")) {
             System.out.println("\nAre you sure you want to wipe the file of all contents?\nType yes or no");
