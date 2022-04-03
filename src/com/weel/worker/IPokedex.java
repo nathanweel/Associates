@@ -27,7 +27,7 @@ public interface IPokedex {
 
     boolean delete(String name) throws IOException;
 
-    boolean update(String name, int hp, String type, String moves) throws IOException;
+    boolean edit(String name, int hp, String type, String moves) throws IOException;
 
     boolean fileWipe() throws IOException;
 

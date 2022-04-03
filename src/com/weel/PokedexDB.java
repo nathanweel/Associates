@@ -22,7 +22,7 @@ public class PokedexDB {
 
         PokedexWorker worker = new PokedexWorker();
 
-        System.out.println("Would you like to add a new Pokemon, search for a Pokemon, read the file, wipe the file, delete an entry, or update an entry?\nType add, search, read, wipe, delete, or update");
+        System.out.println("Would you like to add a new Pokemon, search for a Pokemon, read the file, wipe the file, delete an entry, or edit an entry?\nType add, search, read, wipe, delete, or edit");
         String reply = System.console().readLine();
 
         if (reply.equalsIgnoreCase("add")) {
@@ -107,7 +107,7 @@ public class PokedexDB {
 
             worker.delete(name);
 
-        } else if (reply.equalsIgnoreCase("update")) {
+        } else if (reply.equalsIgnoreCase("edit")) {
             System.out.println("\nWhich Pokemon's data would you like to alter?\nType the name of the Pokemon");
             name = System.console().readLine();
 
@@ -123,7 +123,7 @@ public class PokedexDB {
             System.out.println("\nWhat would you like to change the moves to?");
             moves = System.console().readLine();
 
-            System.out.println("\nUpdating entry...");
+            System.out.println("\nEditing entry...");
             Thread.sleep(1000);
             System.out.println("...");
             Thread.sleep(1000);
@@ -132,8 +132,8 @@ public class PokedexDB {
             System.out.println("...");
             Thread.sleep(500);
 
-            worker.update(name, hp, type, moves);
-            System.out.println("Entry updated");
+            worker.edit(name, hp, type, moves);
+            System.out.println("Entry edited");
 
         } else if (reply.equalsIgnoreCase("wipe")) {
             System.out.println("\nAre you sure you want to wipe the file of all contents?\nType yes or no");

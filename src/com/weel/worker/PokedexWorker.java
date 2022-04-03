@@ -167,7 +167,7 @@ public class PokedexWorker implements IPokedex {
     }
 
     @Override
-    public boolean update(String name, int hp, String type, String moves) throws IOException {
+    public boolean edit( String name, int hp, String type, String moves) throws IOException {
         String filename = "C:\\Temp\\pokedex.txt";
 
         List list = readFileContents(filename);
