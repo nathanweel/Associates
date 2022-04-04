@@ -1,6 +1,6 @@
 package com.weel.worker;
 
-import com.weel.pokedex.domain.Pokedex;
+import com.weel.associates.domain.Associates;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -13,25 +13,25 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-public class PokedexWorker implements IPokedex {
+public class AssociateWorker implements IAssociates {
 
     @Override
-    public Pokedex convertInput(String name, int hp, String type, String moves) {
-        Pokedex pokemon = new Pokedex();
+    public Associates convertInput(String name, int phone, String gender, String details) {
+        Associates pokemon = new Associates();
         pokemon.setName(name);
-        pokemon.setHp(hp);
-        pokemon.setType(type);
-        pokemon.setMoves(moves);
+        pokemon.setPhone(phone);
+        pokemon.setGender(gender);
+        pokemon.setDetails(details);
         return pokemon;
     }
 
     @Override
-    public boolean write(Pokedex pokedex) throws IOException {
+    public boolean write(Associates associates) throws IOException {
         //Change filename to the file's location
-        String filename = "C:\\Temp\\pokedex.txt";
+        String filename = "C:\\Temp\\associates.txt";
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(filename, true));
-        writer.append(pokedex.toString() + "\n");
+        writer.append(associates.toString() + "\n");
 
         writer.close();
         return true;
@@ -39,7 +39,8 @@ public class PokedexWorker implements IPokedex {
 
     @Override
     public boolean overWrite(List copyList) throws IOException {
-        String filename = "C:\\Temp\\pokedex.txt";
+        //Change filename to the file's location
+        String filename = "C:\\Temp\\associates.txt";
 
         BufferedWriter writer = new BufferedWriter(new FileWriter(filename, false));
 
@@ -66,30 +67,30 @@ public class PokedexWorker implements IPokedex {
     }
 
     @Override
-    public Pokedex lineToObj(String line) {
+    public Associates lineToObj(String line) {
         String[] splitLine = line.split(",");
 
-        Pokedex pokedex = new Pokedex();
+        Associates associates = new Associates();
 
-        pokedex.setName(splitLine[0]);
-        pokedex.setHp(Integer.parseInt(splitLine[1]));
-        pokedex.setType(splitLine[2]);
-        pokedex.setMoves(splitLine[3]);
+        associates.setName(splitLine[0]);
+        associates.setPhone(Integer.parseInt(splitLine[1]));
+        associates.setGender(splitLine[2]);
+        associates.setDetails(splitLine[3]);
 
-        return pokedex;
+        return associates;
     }
 
     @Override
-    public Pokedex findByName(String name) {
+    public Associates findByName(String name) {
         //Change filename to the file's location
-        List list = readFileContents("C:\\Temp\\pokedex.txt");
+        List list = readFileContents("C:\\Temp\\associates.txt");
 
         for (int i = 0; i < list.size(); i++) {
             String line = (String) list.get(i);
 
-            Pokedex pokedex = lineToObj(line);
+            Associates associates = lineToObj(line);
 
-            if (pokedex.getName().contains(name)) {
+            if (associates.getName().contains(name)) {
                 System.out.println("\n" + line);
             }
         }
@@ -97,33 +98,16 @@ public class PokedexWorker implements IPokedex {
     }
 
     @Override
-    public Pokedex findByType(String type) {
+    public Associates findByGender(String gender) {
         //Change filename to the file's location
-        List list = readFileContents("C:\\Temp\\pokedex.txt");
+        List list = readFileContents("C:\\Temp\\associates.txt");
 
         for (int i = 0; i < list.size(); i++) {
             String line = (String) list.get(i);
 
-            Pokedex pokedex = lineToObj(line);
+            Associates associates = lineToObj(line);
 
-            if (pokedex.getType().contains(type)) {
-                System.out.println("\n" + line);
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public Pokedex findByMoves(String moves) {
-        //Change filename to the file's location
-        List list = readFileContents("C:\\Temp\\pokedex.txt");
-
-        for (int i = 0; i < list.size(); i++) {
-            String line = (String) list.get(i);
-
-            Pokedex pokedex = lineToObj(line);
-
-            if (pokedex.getMoves().contains(moves)) {
+            if (associates.getGender().contains(gender)) {
                 System.out.println("\n" + line);
             }
         }
@@ -133,7 +117,7 @@ public class PokedexWorker implements IPokedex {
     @Override
     public List showFile(String filename) {
         //Change filename to the file's location
-        List lines = readFileContents("C:\\Temp\\pokedex.txt");
+        List lines = readFileContents("C:\\Temp\\associates.txt");
 
         Iterator itr = lines.iterator();
         while (itr.hasNext()) {
@@ -144,7 +128,8 @@ public class PokedexWorker implements IPokedex {
 
     @Override
     public boolean delete(String name) throws IOException {
-        String filename = "C:\\Temp\\pokedex.txt";
+        //Change filename to the file's location
+        String filename = "C:\\Temp\\associates.txt";
 
         List list = readFileContents(filename);
         List copyList = new ArrayList();
@@ -153,9 +138,9 @@ public class PokedexWorker implements IPokedex {
         for (int i = 0; i < list.size(); i++) {
             String line = (String) list.get(i);
 
-            Pokedex pokedex = lineToObj(line);
+            Associates associates = lineToObj(line);
 
-            if (pokedex.getName().contains(name)) {
+            if (associates.getName().contains(name)) {
                 System.out.println("\nDeleted\n" + line);
                 copyList.remove(i);
             }
@@ -167,8 +152,9 @@ public class PokedexWorker implements IPokedex {
     }
 
     @Override
-    public boolean edit( String name, int hp, String type, String moves) throws IOException {
-        String filename = "C:\\Temp\\pokedex.txt";
+    public boolean edit( String name, int phone, String gender, String details) throws IOException {
+        //Change filename to the file's location
+        String filename = "C:\\Temp\\associates.txt";
 
         List list = readFileContents(filename);
         List copyList = new ArrayList();
@@ -177,13 +163,13 @@ public class PokedexWorker implements IPokedex {
         for (int i = 0; i < list.size(); i++) {
             String line = (String) list.get(i);
 
-            Pokedex pokedex = lineToObj(line);
+            Associates associates = lineToObj(line);
 
-            if (pokedex.getName().contains(name)) {
-                Pokedex pokemon = convertInput(name, hp, type, moves);
+            if (associates.getName().contains(name)) {
+                Associates person = convertInput(name, phone, gender, details);
 
                 copyList.remove(i);
-                copyList.add(pokemon);
+                copyList.add(person);
             }
         }
 

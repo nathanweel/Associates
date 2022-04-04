@@ -1,44 +1,44 @@
 package com.weel;
 
-import com.weel.pokedex.domain.Pokedex;
-import com.weel.worker.PokedexWorker;
+import com.weel.associates.domain.Associates;
+import com.weel.worker.AssociateWorker;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
 //Run this class!
 
-public class PokedexDB {
+public class AssociatesDB {
 
     public static void main(String[] args) throws IOException, InterruptedException {
 
         String name;
-        int hp;
-        String type;
-        String moves;
+        int phone;
+        String gender;
+        String details;
 
         //Welcome Signature
         System.out.println("                                                \n" + " \\    / _  |  _  _  ._ _   _                     \n" + "  \\/\\/ (/_ | (_ (_) | | | (/_                    \n" + " |_)      ._   _. _|_ |_   _. ._        _   _  | \n" + " |_) \\/   | | (_|  |_ | | (_| | | \\/\\/ (/_ (/_ | \n" + "     /                                           ");
 
-        PokedexWorker worker = new PokedexWorker();
+        AssociateWorker worker = new AssociateWorker();
 
-        System.out.println("Would you like to add a new Pokemon, search for a Pokemon, read the file, wipe the file, delete an entry, or edit an entry?\nType add, search, read, wipe, delete, or edit");
+        System.out.println("Would you like to add a new associate, search for an associate, read the file, wipe the file, delete an entry, or edit an entry?\nType add, search, read, wipe, delete, or edit");
         String reply = System.console().readLine();
 
         if (reply.equalsIgnoreCase("add")) {
-            System.out.println("\nWhat is the name of the Pokemon?");
+            System.out.println("\nWhat is your associate's name??");
             name = System.console().readLine();
 
-            System.out.println("\nHow much health does this Pokemon have?");
-            hp = Integer.parseInt(System.console().readLine());
+            System.out.println("\nWhat is the associate's phone number?");
+            phone = Integer.parseInt(System.console().readLine());
 
-            System.out.println("\nWhat type(s) is this Pokemon?");
-            type = System.console().readLine();
+            System.out.println("\nWhat is your associates gender?");
+            gender = System.console().readLine();
 
-            System.out.println("\nWhat move(s) can this Pokemon use?");
-            moves = System.console().readLine();
+            System.out.println("\nAny details about your associate?");
+            details = System.console().readLine();
 
-            Pokedex pokedex = worker.convertInput(name, hp, type, moves);
+            Associates associates = worker.convertInput(name, phone, gender, details);
 
             System.out.println("\nWriting credentials to a file...");
             Thread.sleep(1000);
@@ -50,7 +50,7 @@ public class PokedexDB {
             Thread.sleep(500);
 
             try {
-                worker.write(pokedex);
+                worker.write(associates);
                 System.out.println("\nDONE");
 
             } catch (FileNotFoundException e) {
@@ -59,41 +59,34 @@ public class PokedexDB {
             }
 
         } else if (reply.equalsIgnoreCase("search")) {
-            System.out.println("\nWould you like to search by name, type, or moves?\nType name, type or moves");
+            System.out.println("\nWould you like to search by name or gender?\nType name or gender");
             reply = System.console().readLine();
 
             if (reply.equalsIgnoreCase("name")) {
-                System.out.println("\nWhat is the name of the Pokemon?");
+                System.out.println("\nWhat is you associate's name?");
                 name = System.console().readLine();
 
-                System.out.println("\nHere are your results:-\nKey: name, hp, type, moves");
+                System.out.println("\nHere are your results:-\nKey: name, phone, gender, details");
                 worker.findByName(name);
 
-            } else if (reply.equalsIgnoreCase("type")) {
-                System.out.println("\nWhat is/are the Pokemon's type(s)");
-                type = System.console().readLine();
+            } else if (reply.equalsIgnoreCase("gender")) {
+                System.out.println("\nWhat is your associates gender?");
+                gender = System.console().readLine();
 
-                System.out.println("\nHere are your results:-\nKey: name, hp, type, moves");
-                worker.findByType(type);
-
-            } else if (reply.equalsIgnoreCase("moves")) {
-                System.out.println("What move(s) can this Pokemon use?");
-                moves = System.console().readLine();
-
-                System.out.println("\nHere are your results:-\nKey: name, hp, type, moves");
-                worker.findByMoves(moves);
+                System.out.println("\nHere are your results:-\nKey: name, phone, gender, details");
+                worker.findByGender(gender);
 
             } else {
                 System.out.println("Unknown search request");
             }
 
         } else if (reply.equalsIgnoreCase("read")) {
-            System.out.println("\nHere is the file:-\nKey: name, hp, type, moves\n");
+            System.out.println("\nHere is the file:-\nKey: name, phone, gender, details\n");
             //Change filename to the file's location
-            worker.showFile("C:\\Temp\\pokedex.txt");
+            worker.showFile("C:\\Temp\\associates.txt");
 
         } else if (reply.equalsIgnoreCase("delete")) {
-            System.out.println("\nWhat entry would you like to delete?\nType the name of the Pokemon");
+            System.out.println("\nWhat entry would you like to delete?\nType the name of the associate");
             name = System.console().readLine();
 
             System.out.println("\nDeleting entry...");
@@ -108,20 +101,20 @@ public class PokedexDB {
             worker.delete(name);
 
         } else if (reply.equalsIgnoreCase("edit")) {
-            System.out.println("\nWhich Pokemon's data would you like to alter?\nType the name of the Pokemon");
+            System.out.println("\nWhich associate's data would you like to alter?\nType the name of the associate");
             name = System.console().readLine();
 
             System.out.println("You are updating the entry below");
             worker.findByName(name);
 
-            System.out.println("\nWhat would you like to change the hp to?");
-            hp = Integer.parseInt(System.console().readLine());
+            System.out.println("\nWhat would you like to change the phone number to?");
+            phone = Integer.parseInt(System.console().readLine());
 
-            System.out.println("\nWhat would you like to change the type to?");
-            type = System.console().readLine();
+            System.out.println("\nWhat would you like to change the gender to?");
+            gender = System.console().readLine();
 
-            System.out.println("\nWhat would you like to change the moves to?");
-            moves = System.console().readLine();
+            System.out.println("\nWhat would you like to change the details to?");
+            details = System.console().readLine();
 
             System.out.println("\nEditing entry...");
             Thread.sleep(1000);
@@ -132,7 +125,7 @@ public class PokedexDB {
             System.out.println("...");
             Thread.sleep(500);
 
-            worker.edit(name, hp, type, moves);
+            worker.edit(name, phone, gender, details);
             System.out.println("Entry edited");
 
         } else if (reply.equalsIgnoreCase("wipe")) {
