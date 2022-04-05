@@ -13,8 +13,8 @@ public class AssociatesDB {
     public static void main(String[] args) throws IOException, InterruptedException {
 
         String name;
-        int phone;
-        String gender;
+        String phone;
+        String email;
         String details;
 
         //Welcome Signature
@@ -30,15 +30,15 @@ public class AssociatesDB {
             name = System.console().readLine();
 
             System.out.println("\nWhat is the associate's phone number?");
-            phone = Integer.parseInt(System.console().readLine());
+            phone = System.console().readLine();
 
             System.out.println("\nWhat is your associates gender?");
-            gender = System.console().readLine();
+            email = System.console().readLine();
 
             System.out.println("\nAny details about your associate?");
             details = System.console().readLine();
 
-            Associates associates = worker.convertInput(name, phone, gender, details);
+            Associates associates = worker.convertInput(name, phone, email, details);
 
             System.out.println("\nWriting credentials to a file...");
             Thread.sleep(1000);
@@ -59,29 +59,14 @@ public class AssociatesDB {
             }
 
         } else if (reply.equalsIgnoreCase("search")) {
-            System.out.println("\nWould you like to search by name or gender?\nType name or gender");
-            reply = System.console().readLine();
+            System.out.println("\nWhat is you associate's name?");
+            name = System.console().readLine();
 
-            if (reply.equalsIgnoreCase("name")) {
-                System.out.println("\nWhat is you associate's name?");
-                name = System.console().readLine();
-
-                System.out.println("\nHere are your results:-\nKey: name, phone, gender, details");
-                worker.findByName(name);
-
-            } else if (reply.equalsIgnoreCase("gender")) {
-                System.out.println("\nWhat is your associates gender?");
-                gender = System.console().readLine();
-
-                System.out.println("\nHere are your results:-\nKey: name, phone, gender, details");
-                worker.findByGender(gender);
-
-            } else {
-                System.out.println("Unknown search request");
-            }
+            System.out.println("\nHere are your results:-\nKey: name, phone, email, details");
+            worker.findByName(name);
 
         } else if (reply.equalsIgnoreCase("read")) {
-            System.out.println("\nHere is the file:-\nKey: name, phone, gender, details\n");
+            System.out.println("\nHere is the file:-\nKey: name, phone, email, details\n");
             //Change filename to the file's location
             worker.showFile("C:\\Temp\\associates.txt");
 
@@ -108,10 +93,10 @@ public class AssociatesDB {
             worker.findByName(name);
 
             System.out.println("\nWhat would you like to change the phone number to?");
-            phone = Integer.parseInt(System.console().readLine());
+            phone = System.console().readLine();
 
             System.out.println("\nWhat would you like to change the gender to?");
-            gender = System.console().readLine();
+            email = System.console().readLine();
 
             System.out.println("\nWhat would you like to change the details to?");
             details = System.console().readLine();
@@ -125,7 +110,7 @@ public class AssociatesDB {
             System.out.println("...");
             Thread.sleep(500);
 
-            worker.edit(name, phone, gender, details);
+            worker.edit(name, phone, email, details);
             System.out.println("Entry edited");
 
         } else if (reply.equalsIgnoreCase("wipe")) {

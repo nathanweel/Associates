@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface IAssociates {
 
-    Associates convertInput(String name, int phone, String gender, String details);
+    Associates convertInput(String name, String phone, String gender, String details);
 
     boolean write(Associates associates) throws IOException;
 
@@ -19,13 +19,11 @@ public interface IAssociates {
 
     Associates findByName(String name);
 
-    Associates findByGender(String gender);
-
     List showFile(String filename);
 
     boolean delete(String name) throws IOException;
 
-    boolean edit(String name, int phone, String gender, String details) throws IOException;
+    boolean edit(String name, String phone, String gender, String details) throws IOException;
 
     boolean fileWipe() throws IOException;
 

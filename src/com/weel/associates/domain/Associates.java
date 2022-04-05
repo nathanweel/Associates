@@ -3,8 +3,8 @@ package com.weel.associates.domain;
 public class Associates {
 
     private String name;
-    private int phone;
-    private String gender;
+    private String phone;
+    private String email;
     private String details;
 
 
@@ -17,20 +17,20 @@ public class Associates {
         this.name = name;
     }
 
-    public int getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(int phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 
-    public String getGender() {
-        return gender;
+    public String getEmail() {
+        return email;
     }
 
-    public void setGender(String gender) {
-        this.gender = gender;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getDetails() {
@@ -43,6 +43,6 @@ public class Associates {
 
 
     public String toString() {
-        return getName() + "," + getPhone() + "," + getGender() + "," + getDetails();
+        return getName() + "," + getPhone() + "," + getEmail() + "," + getDetails();
     }
 }

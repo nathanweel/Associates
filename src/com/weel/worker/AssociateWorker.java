@@ -16,13 +16,13 @@ import java.util.List;
 public class AssociateWorker implements IAssociates {
 
     @Override
-    public Associates convertInput(String name, int phone, String gender, String details) {
-        Associates pokemon = new Associates();
-        pokemon.setName(name);
-        pokemon.setPhone(phone);
-        pokemon.setGender(gender);
-        pokemon.setDetails(details);
-        return pokemon;
+    public Associates convertInput(String name, String phone, String email, String details) {
+        Associates associates = new Associates();
+        associates.setName(name);
+        associates.setPhone(phone);
+        associates.setEmail(email);
+        associates.setDetails(details);
+        return associates;
     }
 
     @Override
@@ -73,8 +73,8 @@ public class AssociateWorker implements IAssociates {
         Associates associates = new Associates();
 
         associates.setName(splitLine[0]);
-        associates.setPhone(Integer.parseInt(splitLine[1]));
-        associates.setGender(splitLine[2]);
+        associates.setPhone(splitLine[1]);
+        associates.setEmail(splitLine[2]);
         associates.setDetails(splitLine[3]);
 
         return associates;
@@ -91,23 +91,6 @@ public class AssociateWorker implements IAssociates {
             Associates associates = lineToObj(line);
 
             if (associates.getName().contains(name)) {
-                System.out.println("\n" + line);
-            }
-        }
-        return null;
-    }
-
-    @Override
-    public Associates findByGender(String gender) {
-        //Change filename to the file's location
-        List list = readFileContents("C:\\Temp\\associates.txt");
-
-        for (int i = 0; i < list.size(); i++) {
-            String line = (String) list.get(i);
-
-            Associates associates = lineToObj(line);
-
-            if (associates.getGender().contains(gender)) {
                 System.out.println("\n" + line);
             }
         }
@@ -152,7 +135,7 @@ public class AssociateWorker implements IAssociates {
     }
 
     @Override
-    public boolean edit( String name, int phone, String gender, String details) throws IOException {
+    public boolean edit( String name, String phone, String gender, String details) throws IOException {
         //Change filename to the file's location
         String filename = "C:\\Temp\\associates.txt";
 
