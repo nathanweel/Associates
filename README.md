@@ -1,6 +1,6 @@
 # Associates
 
-A database for entering your associates names, their phone numbers, their gender, and notes about them!
+A database for entering your associates names, their phone numbers, their email, and notes about them!
 (Works best on Windows 10 or later)
 
 # Functionality
