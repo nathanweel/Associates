@@ -26,13 +26,13 @@ public class AssociatesDB {
         String reply = System.console().readLine();
 
         if (reply.equalsIgnoreCase("add")) {
-            System.out.println("\nWhat is your associate's name??");
+            System.out.println("\nWhat is your associate's name?");
             name = System.console().readLine();
 
             System.out.println("\nWhat is the associate's phone number?");
             phone = System.console().readLine();
 
-            System.out.println("\nWhat is your associates gender?");
+            System.out.println("\nWhat is your associates email?");
             email = System.console().readLine();
 
             System.out.println("\nAny details about your associate?");
@@ -55,7 +55,7 @@ public class AssociatesDB {
 
             } catch (FileNotFoundException e) {
                 System.out.println("File not found");
-                System.out.println("Make sure the file is labeled 'pokedex.txt' and that it is inside of a folder called 'Temp'.\nAlso make sure the folder is on the local disk.");
+                System.out.println("Make sure the file is labeled 'associates.txt' and that it is inside of a folder called 'Temp'.\nAlso make sure the folder is on the local disk.");
             }
 
         } else if (reply.equalsIgnoreCase("search")) {
@@ -95,7 +95,7 @@ public class AssociatesDB {
             System.out.println("\nWhat would you like to change the phone number to?");
             phone = System.console().readLine();
 
-            System.out.println("\nWhat would you like to change the gender to?");
+            System.out.println("\nWhat would you like to change the email to?");
             email = System.console().readLine();
 
             System.out.println("\nWhat would you like to change the details to?");
